@@ -4,3 +4,89 @@
 #   |MAYUS|  A  |  S  |  D  |  F  |  G  |  H  |  J  |  K  |  L  |  Ñ  |  {[ | }]  | END |REPAG|
 #   |SHIFT| < > |  Z  |  X  |  C  |  V  |  B  |  N  |  M  |  ,  |  .  |  -  |SHIFT| UP  |AVPAG|
 #   |CNTRL| WIN | ALT | BACKSPACE |   SPACE   |   ENTER   |ALTGR|  FN |CNTRL|LEFT |DOWN |RIGHT|
+#------------------------------------------------------------------------------------------------
+
+units:
+  keyX: u
+  keyY: u
+  padX: u + 5
+  padY: u + 5
+points:
+  key:
+    width: 1keyX
+    height: 1keyY
+    padding: 1keyX
+    spread: 1keyX
+    anchor:
+      shift: [40,-170]
+  zones:
+    HomeMix65:
+      columns:
+        esc:
+        col1:
+        col2:
+        col3:
+          rows.ctrl.skip: true
+        col4:
+          rows.ctrl.skip: true
+        col5:
+          rows.ctrl.skip: true
+        col6:
+          rows.ctrl.skip: true
+        col7:
+          rows.ctrl.skip: true
+        col8:
+          rows.ctrl.skip: true
+        col9:
+        col10:
+        col11:
+        col12:
+        col13:
+        col14:
+      rows:
+        ctrl:
+        shift:
+        mayus:
+        tab:
+        esc:
+    special:
+      columns:
+        backspace:
+          key:
+            shift: [3.5keyX,0]
+            width: 2keyX
+        space:
+          key:
+            shift: [4.5keyX,0]
+            width: 2keyX
+        enter:
+          key:
+            shift: [5.5keyX,0]
+            width: 2keyX
+outlines:
+  raw:
+    - what: rectangle
+      where: true
+      size: [padX, padY]
+  keys:
+    - what: rectangle
+      where: true
+      size: [keyX-0.5, keyY-0.5]
+  board:
+    - what: polygon
+      operation: stack
+      points:
+        - ref: HomeMix65_esc_ctrl
+          shift: [-0.5padX,-0.5padY]
+        - ref: HomeMix65_esc_esc
+          shift: [-0.5padX,0.5padY]
+        - ref: HomeMix65_col14_esc
+          shift: [0.5padX, 0.5padY]
+        - ref: HomeMix65_col14_ctrl
+          shift: [0.5padX, -0.5padY]
+      fillet: 2
+  combo_board_keys:
+    - name: board
+    - operation: subtract
+      name: keys
+
